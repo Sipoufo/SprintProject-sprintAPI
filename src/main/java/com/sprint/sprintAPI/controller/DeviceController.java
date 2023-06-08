@@ -1,13 +1,11 @@
 package com.sprint.sprintAPI.controller;
 
-import com.sprint.sprintAPI.entity.Device;
-import com.sprint.sprintAPI.entity.DeviceType;
-import com.sprint.sprintAPI.entity.Metric;
-import com.sprint.sprintAPI.entity.Users;
+import com.sprint.sprintAPI.entity.*;
 import com.sprint.sprintAPI.entity.formats.DeviceFormat;
 import com.sprint.sprintAPI.error.DeviceNotFoundException;
 import com.sprint.sprintAPI.service.DeviceService;
 import com.sprint.sprintAPI.service.DeviceTypeService;
+import com.sprint.sprintAPI.service.RoomService;
 import com.sprint.sprintAPI.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +23,8 @@ public class DeviceController {
     private DeviceTypeService deviceTypeService;
     @Autowired
     private UsersService usersService;
+    @Autowired
+    private RoomService roomService;
 
     @PostMapping("")
     @RolesAllowed({"ROLE_ADMIN"})
@@ -82,5 +82,11 @@ public class DeviceController {
     public List<Device> fetchDeviceByUser (@PathVariable("id") Long userId) {
         Users user = usersService.fetchUserById(userId);
         return deviceService.fetchDeviceByUser(user);
+    }
+
+    @GetMapping("/room/{id}")
+    public List<Device> fetchDeviceByRoom (@PathVariable("id") Long roomId) {
+        Room room = roomService.fetchRoomById(roomId);
+        return deviceService.fetchDeviceByRoom(room);
     }
 }

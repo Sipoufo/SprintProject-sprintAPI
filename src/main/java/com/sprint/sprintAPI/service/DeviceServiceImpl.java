@@ -1,9 +1,6 @@
 package com.sprint.sprintAPI.service;
 
-import com.sprint.sprintAPI.entity.Device;
-import com.sprint.sprintAPI.entity.DeviceType;
-import com.sprint.sprintAPI.entity.Metric;
-import com.sprint.sprintAPI.entity.Users;
+import com.sprint.sprintAPI.entity.*;
 import com.sprint.sprintAPI.error.DeviceNotFoundException;
 import com.sprint.sprintAPI.repository.DeviceRepository;
 import com.sprint.sprintAPI.repository.DeviceTypeRepository;
@@ -65,5 +62,10 @@ public class DeviceServiceImpl implements DeviceService{
     @Override
     public List<Device> fetchDeviceByUser(Users users) {
         return deviceRepository.findByUsers(users);
+    }
+
+    @Override
+    public List<Device> fetchDeviceByRoom(Room room) {
+        return deviceRepository.findByRoom(room);
     }
 }

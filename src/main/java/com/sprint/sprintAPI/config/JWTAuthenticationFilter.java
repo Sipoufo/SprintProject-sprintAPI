@@ -2,10 +2,6 @@ package com.sprint.sprintAPI.config;
 
 import com.sprint.sprintAPI.service.JWTService;
 import com.sprint.sprintAPI.service.UsersService;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,6 +12,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.http.*;
+import javax.servlet.*;
 import java.io.IOException;
 
 // We use this class every time when the user will send a request
