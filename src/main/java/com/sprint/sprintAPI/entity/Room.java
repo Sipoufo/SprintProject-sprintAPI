@@ -8,21 +8,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DeviceType {
+@Data
+public class Room {
     @Id
     @SequenceGenerator(
-            name = "device_type_sequence",
-            sequenceName = "device_type_sequence",
+            name = "room_sequence",
+            sequenceName = "room_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "device_type_sequence"
+            generator = "room_sequence"
     )
-    public Long deviceTypeId;
+    public Long roomId;
+    @Column(unique = true, nullable = false)
     public String name;
 }

@@ -9,10 +9,11 @@ import com.sprint.sprintAPI.service.MetricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/metric")
 public class MetricController {
     @Autowired
@@ -21,6 +22,7 @@ public class MetricController {
     private DeviceService deviceService;
 
     @PostMapping("")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Metric saveMetric (@RequestBody MetricFormat metric) {
         Device device = deviceService.fetchDeviceById(metric.deviceId);
         Metric metric1 = Metric
@@ -43,11 +45,13 @@ public class MetricController {
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Boolean deleteMetric (@PathVariable("id") Long Id) {
         return metricService.deleteMetricById(Id);
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Metric updateMetric (@PathVariable("id") Long Id, @RequestBody MetricFormat metric) {
         Device device = deviceService.fetchDeviceById(metric.deviceId);
         Metric metric1 = Metric

@@ -15,4 +15,5 @@ import java.util.List;
 public interface DeviceRepository extends JpaRepository<Device, Long> {
     public List<Device> findByDeviceType(DeviceType deviceType);
     public List<Device> findByUsers(Users users);
+    public List<Device> findByRoom(Users users);
 }

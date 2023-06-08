@@ -12,10 +12,11 @@ import com.sprint.sprintAPI.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @RequestMapping("/device")
 public class DeviceController {
     @Autowired
@@ -26,6 +27,7 @@ public class DeviceController {
     private UsersService usersService;
 
     @PostMapping("")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Device saveDevice (@RequestBody DeviceFormat device) {
         DeviceType deviceType = deviceTypeService.fetchDeviceTypeById(device.getDeviceTypeId());
         Users user = usersService.fetchUserById(device.getUsersId());
@@ -50,6 +52,7 @@ public class DeviceController {
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Device updateDevice (@PathVariable("id") Long deviceId, @RequestBody DeviceFormat device) {
         DeviceType deviceType = deviceTypeService.fetchDeviceTypeById(device.getDeviceTypeId());
         Users user = usersService.fetchUserById(device.getUsersId());
@@ -64,6 +67,7 @@ public class DeviceController {
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Boolean deleteDevice (@PathVariable("id") Long deviceId) {
         return deviceService.deleteDeviceById(deviceId);
     }

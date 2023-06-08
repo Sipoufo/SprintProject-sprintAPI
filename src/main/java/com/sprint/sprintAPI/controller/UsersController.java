@@ -7,16 +7,18 @@ import com.sprint.sprintAPI.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/users")
 public class UsersController {
     @Autowired
     private UsersService usersService;
 
     @PostMapping("")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Users saveUser (@RequestBody Users deviceType) {
         return usersService.saveUser(deviceType);
     }
@@ -32,11 +34,13 @@ public class UsersController {
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Boolean deleteUser (@PathVariable("id") Long Id) {
         return usersService.deleteUSerById(Id);
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
     public Users updateUser (@PathVariable("id") Long Id, @RequestBody Users metric) {
         return usersService.updateUserById(Id, metric);
     }
