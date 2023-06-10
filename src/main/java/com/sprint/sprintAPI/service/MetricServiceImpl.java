@@ -59,4 +59,9 @@ public class MetricServiceImpl implements MetricService{
     public List<Metric> fetchMetricByDevice(Device device) {
         return metricRepository.findByDevice(device);
     }
+
+//    @Override
+//    public Metric fetchLastMetricByDevice(Device device) {
+//        return metricRepository.findByDevice(device).get(0);
+//    }
 }

@@ -14,4 +14,5 @@ public interface DeviceService {
     public List<Device> fetchDeviceByDeviceType(DeviceType deviceType);
     public List<Device> fetchDeviceByUser(Users users);
     public List<Device> fetchDeviceByRoom(Room room);
+    public Device fetchDeviceByRepresentationId(int representationId);
 }

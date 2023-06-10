@@ -14,15 +14,7 @@ import javax.persistence.*;
 @Builder
 public class DeviceType {
     @Id
-    @SequenceGenerator(
-            name = "device_type_sequence",
-            sequenceName = "device_type_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "device_type_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long deviceTypeId;
     public String name;
 }

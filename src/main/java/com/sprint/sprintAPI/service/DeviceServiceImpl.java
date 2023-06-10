@@ -68,4 +68,9 @@ public class DeviceServiceImpl implements DeviceService{
     public List<Device> fetchDeviceByRoom(Room room) {
         return deviceRepository.findByRoom(room);
     }
+
+    @Override
+    public Device fetchDeviceByRepresentationId(int representationId) {
+        return deviceRepository.findByRepresentationId(representationId);
+    }
 }

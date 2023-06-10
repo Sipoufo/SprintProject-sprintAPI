@@ -18,4 +18,5 @@ public interface MetricService {
     public boolean deleteMetricById(Long metricId);
     public Metric updateMetricById(Long metricId, Metric metric);
     public List<Metric> fetchMetricByDevice(Device device);
+//    public Metric fetchLastMetricByDevice(Device device);
 }

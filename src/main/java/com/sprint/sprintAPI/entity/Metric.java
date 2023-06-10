@@ -14,20 +14,13 @@ import javax.persistence.*;
 @Builder
 public class Metric {
     @Id
-    @SequenceGenerator(
-            name = "metric_sequence",
-            sequenceName = "metric_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "metric_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long metricId;
     public String metricDate;
     public double metricValue;
+    public String unit;
     @ManyToOne(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.MERGE
     )
     @JoinColumn(
             name = "device_id",

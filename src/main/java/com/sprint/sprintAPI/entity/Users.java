@@ -19,12 +19,7 @@ import java.util.List;
 @Builder
 public class Users implements UserDetails {
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long userId;
     public String name;
     @Column(unique = true)
@@ -37,7 +32,7 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

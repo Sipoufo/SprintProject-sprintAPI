@@ -15,19 +15,12 @@ import javax.persistence.*;
 @Data
 public class Device {
     @Id
-    @SequenceGenerator(
-            name = "device_sequence",
-            sequenceName = "device_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "device_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long deviceId;
     public String name;
     @Column(unique = true)
     public int representationId;
+    public String description;
 
     @ManyToOne(
             cascade = CascadeType.ALL
