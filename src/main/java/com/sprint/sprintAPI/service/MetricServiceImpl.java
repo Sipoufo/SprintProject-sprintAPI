@@ -46,7 +46,7 @@ public class MetricServiceImpl implements MetricService{
         if (Objects.nonNull(metric.getMetricValue())) {
             metricDB.setMetricValue(metric.getMetricValue());
         }
-        if (Objects.nonNull(metric.getMetricDate()) || "".equalsIgnoreCase(metric.getMetricDate())) {
+        if (Objects.nonNull(metric.getMetricDate())) {
             metricDB.setMetricDate(metric.getMetricDate());
         }
         if (Objects.nonNull(metric.getDevice())) {

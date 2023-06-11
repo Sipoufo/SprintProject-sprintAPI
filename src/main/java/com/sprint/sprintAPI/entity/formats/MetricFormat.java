@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Builder
 public class MetricFormat {
-    public String metricDate;
+    public long metricDate;
     public double metricValue;
     public Long deviceId;
 }

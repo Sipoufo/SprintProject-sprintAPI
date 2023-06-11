@@ -33,6 +33,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(
             @RequestBody LoginRequest request
     ){
+        System.out.println(request.email);
         return ResponseEntity.ok(authenticationService.login(request));
     }
 }

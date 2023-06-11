@@ -16,7 +16,7 @@ public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long metricId;
-    public String metricDate;
+    public Long metricDate;
     public double metricValue;
     public String unit;
     @ManyToOne(
