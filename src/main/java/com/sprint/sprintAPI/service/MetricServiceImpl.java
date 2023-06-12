@@ -5,8 +5,11 @@ import com.sprint.sprintAPI.entity.Metric;
 import com.sprint.sprintAPI.error.MetricException;
 import com.sprint.sprintAPI.repository.MetricRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,7 +60,10 @@ public class MetricServiceImpl implements MetricService{
 
     @Override
     public List<Metric> fetchMetricByDevice(Device device) {
-        return metricRepository.findByDevice(device);
+        Pageable topTwenty = PageRequest.of(0, 40);
+        List<Metric> metrics = metricRepository.findByDevice(device, topTwenty);
+//        Collections.reverse(metrics);
+        return metrics;
     }
 
 //    @Override

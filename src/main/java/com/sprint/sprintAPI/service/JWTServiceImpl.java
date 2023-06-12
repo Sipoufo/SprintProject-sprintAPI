@@ -67,7 +67,7 @@ public class JWTServiceImpl implements JWTService {
     }
 
     // Check if token expired
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         System.out.println("new Date() => " + new Date());
         System.out.println("extractExpiration(token) => " + extractExpiration(token));
         return extractExpiration(token).before(new Date());
